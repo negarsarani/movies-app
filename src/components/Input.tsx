@@ -14,7 +14,6 @@ const Input = ({
         <label htmlFor="">{label}</label>
       <input
         className="border outline-yellow-600 "
-        id="outlined-basic"
         type={type}
         name={name}
         placeholder={placeholder}

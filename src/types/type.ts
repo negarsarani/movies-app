@@ -6,16 +6,22 @@ export type InputType = {
   error: string;
   label:string;
   onChange: (value: string) => void;
-  option?:[]
 };
 export type SelectType = {
-  type: string;
   name: string;
-  placeholder: string;
   value: string;
   error: string;
   label:string;
   onChange: (value: string) => void;
-  option?:[]
+  option:[]
 };
 
+export type TextareaType ={
+  placeholder: string;
+  name: string;
+  value: string;
+  error: string;
+  label:string;
+  onChange: (value: string) => void;
+  
+}

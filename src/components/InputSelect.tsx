@@ -1,21 +1,19 @@
-import { InputType } from '../types/type';
+import  { SelectType } from '../types/type';
 
-const Input = ({
+const Select = ({
   name,
-  placeholder,
   value,
   error,
   onChange,
   label,
   option,
-}: InputType) => {
+}: SelectType) => {
   return (
     <div className="flex-col flex w-40 items-start justify-center gap-2">
       <label htmlFor="">{label}</label>
       <select
         className="border outline-yellow-600 "
         name={name}
-        placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
       >
@@ -23,9 +21,9 @@ const Input = ({
           return <option value={item}>{item}</option>;
         })}
       </select>
-      {error !== '' ? <p className="text-red-500"></p> : null}
+      {error !== '' && <p className="text-red-500"></p>}
     </div>
   );
 };
 
-export default Input;
+export default Select;
