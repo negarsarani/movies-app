@@ -1,4 +1,4 @@
-import  { SelectType } from '../types/type';
+import { SelectType } from '../types/type';
 
 const Select = ({
   name,
@@ -14,12 +14,13 @@ const Select = ({
       <select
         className="border outline-yellow-600 "
         name={name}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
+        // value={value}
+        onChange={(e) => console.log(e.target.value)}
       >
-        {option.map((item) => {
-          return <option value={item}>{item}</option>;
-        })}
+    
+        {option.map((item) => (
+          <option value={item} key={item}>{item} </option>
+        ))}
       </select>
       {error !== '' && <p className="text-red-500"></p>}
     </div>

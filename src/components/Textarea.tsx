@@ -14,8 +14,8 @@ const Textarea = ({
     <div className="flex-col flex w-40 items-start justify-center gap-2">
       <label htmlFor="">{label}</label>
       <textarea
-      cols={30}
-      rows={10}
+      cols={20}
+      rows={5}
         className="border outline-yellow-600 "
         name={name}
         placeholder={placeholder}
