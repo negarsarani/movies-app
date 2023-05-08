@@ -1,10 +1,4 @@
-import {
-  createContext,
-  ReactNode,
-  useReducer,
-  Reducer,
-  useContext,
-} from 'react';
+import { createContext, ReactNode, useReducer, useContext } from 'react';
 import { ActionType, FormContextType } from '../types/type';
 
 const initialState: FormContextType = {
@@ -20,18 +14,29 @@ const initialState: FormContextType = {
 const reducer = (state: FormContextType, action: ActionType) => {
   switch (action.type) {
     case 'movie':
-      if (action.payload.movie !== '') {
-        return { ...state, info: { ...state.info, movie: action.payload } };
-      } else {
-        state.errors.movie = '';
-        return { ...state, errors: { ...state.errors } };
+      return {
+        ...state,
+        info: {
+          ...state.info,
+          movie: action.payload.value,
+        },
+        errors: action.payload.errors 
       }
+
+    // return { ...state, errors: {   };
+
     case 'genre':
       // rest of code
       break;
     case 'director':
-      // rest of code
-      break;
+      return {
+        ...state,
+        info: {
+          ...state.info,
+          director: action.payload.value,
+        },
+        errors: action.payload.errors 
+      };
     case 'year':
       // rest of code
       break;

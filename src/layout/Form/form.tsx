@@ -1,24 +1,35 @@
 import Input from '../../components/Input';
 import Select from '../../components/InputSelect';
-import Textarea from '../../components/textarea';
-import {useFormContext} from "../../context/formContext"
+import Textarea from '../../components/Textarea';
+import { useFormContext } from '../../context/formContext';
+import validationForm from '../../library/validation';
 const Form = () => {
-  console.log(useFormContext());
-  
+  const { state, dispatch } = useFormContext();
+  const handleDispatch = (value: string, name: string) => {
+    
+    return dispatch({
+      type: name,
+      payload: {
+        value: value,
+        errors: validationForm(name, value),
+      },
+    });
+  };
   return (
     <form onSubmit={() => {}} className="flex gap-10">
-      <div className='w-6/12 flex flex-col gap-5'>
-        <div className='flex gap-10'>
+      <div className="w-6/12 flex flex-col gap-5">
+        <div className="flex gap-10">
           <Input
             label="نام فیلم"
             name="movie"
             type="text"
-            onChange={() => {
-              
+            onChange={(value: string, name:string) => {
+              handleDispatch(value, name);
             }}
-            value=""
+            
+            value={state.info.movie}
+            error={state.errors.movie}
             placeholder="نام فیلم را بنویسید"
-            error=""
           />
           <Select
             label="ژانر فیلم"
@@ -31,17 +42,18 @@ const Form = () => {
             error=""
           />
         </div>
-        <div className='flex gap-10'>
+        <div className="flex gap-10">
           <Input
             label="کارگردان"
-            name="creator"
+            name="director"
             type="text"
-            onChange={() => {
-              's';
+            onChange={(value: string, name:string) => {
+              handleDispatch(value, name);
             }}
-            value=""
+            
+            value={state.info.director}
+            error={state.errors.director}
             placeholder="نام کارگردان را وارد کنید"
-            error=""
           />
           <Input
             label="سال تولید "
@@ -56,7 +68,7 @@ const Form = () => {
           />
         </div>
       </div>
-      <div className='w-6/12'>
+      <div className="w-6/12">
         <Textarea
           label="توضیحات"
           name="desc"

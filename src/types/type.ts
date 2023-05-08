@@ -5,7 +5,7 @@ export type InputType = {
   value: string;
   error: string;
   label: string;
-  onChange: (value: string) => void;
+  onChange: (value: string , name:string) => void;
 };
 export type SelectType = {
   name: string;
@@ -13,7 +13,7 @@ export type SelectType = {
   error: string;
   label: string;
   onChange: (value: string) => void;
-  option: [];
+  option: [] | string[]
 };
 
 export type TextareaType = {
@@ -22,7 +22,7 @@ export type TextareaType = {
   value: string;
   error: string;
   label: string;
-  onChange: (value: string) => void;
+  onChange: (value: string , name:string) => void;
 };
 export type FormContextType = {
   info: info;
@@ -44,11 +44,9 @@ interface errors {
   description?: string;
 }
 export interface ActionType {
-  type:
-  | 'movie'
-  | 'genre'
-  | 'director'
-  | 'year'
-  | 'description'
-  payload: info;
+  type: 'movie' | 'genre' | 'director' | 'year' | 'description';
+  payload: {value: info , errors: errors};
+}
+export interface validationFormType {
+  name: 'movie' | 'genre' | 'director' | 'year' | 'description';
 }

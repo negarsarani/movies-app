@@ -9,6 +9,7 @@ const Input = ({
   onChange,
   label
 }: InputType) => {
+  
   return (
     <div className='flex-col flex w-40 items-start justify-center gap-2'>
         <label htmlFor="">{label}</label>
@@ -18,9 +19,11 @@ const Input = ({
         name={name}
         placeholder={placeholder}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => onChange(e.target.value , name)}
+        onBlur={(e) => onChange(e.target.value , name)}
+        onKeyUp={(e) => onChange(e.target.value , name)}
       />
-      {error !== '' ? <p className="text-red-500"></p> : null}
+      {error !== '' && <p className="text-red-500">{error}</p> }
     </div>
   );
 };
